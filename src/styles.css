@@ -1,0 +1,76 @@
+:root {
+  --clr-success: #1abc9c;
+  --clr-error: #fa635d;
+  --form-input-gap: 0.5em 1em;
+  --outline: rgb(59, 153, 252) auto 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 0 0.8em;
+  height: 40px;
+  border: 2px solid #e0e0e0;
+  border-radius: 7px;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding: 0.7em;
+  border: 0;
+  background-color: var(--clr-success);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: var(--form-input-gap);
+}
+
+.form-group .form-label {
+  flex-basis: 30%;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.form-group .form-input {
+  flex-basis: 70%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.error {
+  color: var(--clr-error);
+}

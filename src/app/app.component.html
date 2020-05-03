@@ -1,0 +1,71 @@
+<main>
+  <form novalidate [formGroup]="form">
+    <h3>Sign Up</h3>
+
+    <ng-container *ngFor="let el of companyElements; let elIndex = index">
+      <div class="form-group">
+        <label [for]="el.id" class="form-label">
+          {{ el.label }} {{ el.required ? "*" : "" }}
+        </label>
+        <input
+          type="text"
+          [id]="el.id"
+          class="form-input"
+          (blur)="validateField(el.control)"
+          [maxlength]="el?.maxLength"
+          [formControlName]="el.control"
+        />
+      </div>
+      <p class="error input-field-error">{{ errorMessages[el.control][0] }}</p>
+    </ng-container>
+
+    <div class="sign-up">
+      <div class="form-group">
+        <label for="password" class="form-label">Password *</label>
+        <input
+          type="password"
+          id="password"
+          class="form-input"
+          (blur)="validateField('password')"
+          formControlName="password"
+        />
+      </div>
+
+      <p class="error input-field-error">{{ errorMessages["password"][0] }}</p>
+
+      <div class="form-group">
+        <label for="confirm-password" class="form-label">
+          Confirm Password *
+        </label>
+        <input
+          type="password"
+          id="confirm-password"
+          class="form-input"
+          (blur)="validateField('confirmPassword')"
+          formControlName="confirmPassword"
+        />
+      </div>
+
+      <p class="error input-field-error">
+        {{ errorMessages["confirmPassword"][0] }}
+      </p>
+
+      <app-radio-btn
+        [label]="el.label"
+        [labelFor]="el.id"
+        [parentForm]="form"
+        [control]="el.control"
+        *ngFor="let el of signUpElements"
+      >
+      </app-radio-btn>
+    </div>
+
+    <app-checkbox-btn [parentForm]="form" control="termsAccepted">
+      <span>I Agree to the Terms and Conditions *</span>
+    </app-checkbox-btn>
+
+    <button class="submit-btn" [disabled]="form.invalid" (click)="submit()">
+      Submit
+    </button>
+  </form>
+</main>
